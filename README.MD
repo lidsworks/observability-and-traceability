@@ -71,9 +71,3 @@ Se ha configurado GitHub Actions para automatizar el despliegue en el cluster de
 * Backend: Python, Flask y SQLAlchemy
 * Gateway: PHP y Slim 
 * Frontend: Nuxt y Vuetify 
-
-📄 Licencia
----------
-
-Este proyecto está bajo la Licencia Open Source [MIT](https://opensource.org/licenses/MIT).
-
