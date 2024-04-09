@@ -9,7 +9,7 @@ La aplicación consta de una aplicación web desarrollada con Nuxt.js que se com
 
 El objetivo de la aplicación es visualizar una serie de hitos históricos almacenados en base de datos utilizando tecnologías como New Relic para la observación y monitoreo de la aplicación y Kubernetes para el despliegue en un cluster de contenedores.
 
-La generación de los hitos se realiza de forma automática utilizando la API de generación de texto de OpenAI, por lo que los hitos no son creados manualmente por parte del usuario.
+La generación de los hitos se realiza de forma automática utilizando la API de generación de texto de OpenAI (ChatGPT), por lo que los hitos no son creados manualmente por parte del usuario.
 
 📝 Descripción de la aplicación
 -----------------------------
