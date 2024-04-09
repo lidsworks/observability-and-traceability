@@ -38,9 +38,10 @@ En el proyecto podemos ver cómo se puede utilizar New Relic para medir el rendi
 
 Este proyecto es una POC y hay varias cosas que se podrían mejorar:
 
-* Se podría mejorar la seguridad de la aplicación mediante la utilización de SSL/TLS y la implementación de autenticación de usuarios.
+* Se podría mejorar la seguridad y la implementación de autenticación de usuarios.
 * Se podría mejorar la experiencia de usuario al agregar validaciones y mensajes de error útiles en la capa de frontal.
-* Añadir test funcionales
+* Añadir test funcionales para validar el código antes de subir
+* Validar imágenes de Docker (y paquetes de sistemas)
 
 
 🤝 Microservicios creados
