@@ -1,6 +1,6 @@
 PROJECT_NAME=lidm-app-milestone-frontend
 IMAGE ?= $(PROJECT_NAME)
-TAG ?= 1.0.4
+TAG ?= 1.0.5
 
 -include .env
 export

@@ -54,7 +54,7 @@ export default {
   },
   async mounted () {
     try {
-      const response = await fetch('http://poc-milestone.testea.top/gateway/questions')
+      const response = await fetch('https://poc-milestone.testea.top/gateway/questions')
       const data = await response.json()
       this.posts = data
     } catch (error) {
