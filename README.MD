@@ -46,9 +46,9 @@ Este proyecto es una POC y hay varias cosas que se podrían mejorar:
 🤝 Microservicios creados
 ---------------
 
-* [app-milestone-frontend](https://github.com/luisdiaz/app-milestone-frontend): aplicación web desarrollada con Nuxt.js
-* [app-milestone-gateway](https://github.com/luisdiaz/app-milestone-gateway): aplicación de enrutamiento y gestión de API desarrollada con PHP
-* [app-milestone-backend](https://github.com/luisdiaz/app-milestone-backend): aplicación de gestión de hitos desarrollada con Python y Flask
+* [app-milestone-frontend]: aplicación web desarrollada con Nuxt.js
+* [app-milestone-gateway]: aplicación de enrutamiento y gestión de API desarrollada con PHP
+* [app-milestone-backend]: aplicación de gestión de hitos desarrollada con Python y Flask
 
 🤖 Despliegue en Kubernetes
 -------------------------
