@@ -1,0 +1,60 @@
+name: deploy app-milestone-gateway to k8s (onprem)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+    environment: production
+
+    env:
+      LOG_LEVEL: ${{ vars.LOG_LEVEL }}
+      NEW_RELIC_LICENSE_KEY: ${{ secrets.NEW_RELIC_LICENSE_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build images
+        working-directory: ./microservices/app-milestone-gateway
+        run: |
+          make build-remote NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY
+          make push-remote
+
+  configure:
+    needs: build
+    runs-on: self-hosted
+    environment: production
+
+    env:
+      LOG_LEVEL: ${{ vars.LOG_LEVEL }}
+      NEW_RELIC_LICENSE_KEY: ${{ secrets.NEW_RELIC_LICENSE_KEY }}
+    
+    steps:
+      - name: Create namespace
+        run: |
+          NAMESPACE="lidm-app-milestone"; microk8s kubectl get namespace $NAMESPACE &> /dev/null || microk8s kubectl create namespace $NAMESPACE
+
+      - name: Set ConfigMaps
+        run: | 
+          echo "
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: lidm-app-milestone-gateway
+          data:
+            LOG_LEVEL: '$LOG_LEVEL'
+            NEW_RELIC_LICENSE_KEY: '$NEW_RELIC_LICENSE_KEY'
+          " | microk8s kubectl apply --namespace lidm-app-milestone -f -
+
+  deploy:
+    needs: configure
+    runs-on: self-hosted
+
+    steps:
+      - name: Deploy to Kubernetes
+        run: |
+          microk8s kubectl apply -f microservices/app-milestone-gateway/k8s --namespace lidm-app-milestone

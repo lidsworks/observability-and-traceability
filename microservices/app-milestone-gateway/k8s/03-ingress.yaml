@@ -1,0 +1,26 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-api-prefix-gateway
+  namespace: lidm-app-milestone
+spec:
+  stripPrefix:
+    prefixes:
+      - "/gateway"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lidm-app-milestone-gateway-ingressroute
+  namespace: lidm-app-milestone
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`poc-milestone.testea.top`) && PathPrefix(`/gateway`)
+    kind: Rule
+    middlewares:
+      - name: strip-api-prefix-gateway
+    services:
+    - name: lidm-app-milestone-gateway-svc
+      port: 8000

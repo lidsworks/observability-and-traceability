@@ -1,0 +1,26 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-api-prefix-api
+  namespace: lidm-app-milestone
+spec:
+  stripPrefix:
+    prefixes:
+      - "/api"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lidm-app-milestone-backend-ingressroute
+  namespace: lidm-app-milestone
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`poc-milestone.testea.top`) && PathPrefix(`/api`)
+    kind: Rule
+    middlewares:
+      - name: strip-api-prefix-api
+    services:
+    - name: lidm-app-milestone-backend-svc
+      port: 5000

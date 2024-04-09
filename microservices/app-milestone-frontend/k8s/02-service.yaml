@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lidm-app-milestone-frontend-svc
+  namespace: lidm-app-milestone
+spec:
+  selector:
+    app: lidm-app-milestone-frontend
+  ports:
+  - name: http
+    port: 3000
+    targetPort: 3000
+    protocol: TCP

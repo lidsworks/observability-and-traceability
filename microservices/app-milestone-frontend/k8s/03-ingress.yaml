@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: lidm-app-milestone-frontend-ingressroute
+  namespace: lidm-app-milestone
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`poc-milestone.testea.top`)
+    kind: Rule
+    services:
+    - name: lidm-app-milestone-frontend-svc
+      port: 3000
+

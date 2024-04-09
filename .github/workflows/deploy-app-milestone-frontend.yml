@@ -1,0 +1,29 @@
+name: deploy app-milestone-frontend to k8s (onprem)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build images
+        working-directory: ./microservices/app-milestone-frontend
+        run: |
+          make build-remote
+          make push-remote
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+
+    steps:
+      - name: Deploy to Kubernetes
+        run: |
+          microk8s kubectl apply -f microservices/app-milestone-frontend/k8s --namespace lidm-app-milestone

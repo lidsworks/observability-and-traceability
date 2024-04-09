@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lidm-app-milestone-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lidm-app-milestone-frontend
+  template:
+    metadata:
+      labels:
+        app: lidm-app-milestone-frontend
+    spec:
+      containers:
+      - name: lidm-app-milestone-frontend
+        image: localhost:32000/lidm-app-milestone-frontend:1.0.4
+        ports:
+        - containerPort: 3000

@@ -1,0 +1,17 @@
+{
+    "name": "luigdima/app-getday-backend",
+    "description": "Backend API for GetDay",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luis I. Díaz Martínez",
+            "email": "hello@luisdiaz.dev"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.13.0",
+        "slim/psr7": "^1.6.1",
+        "guzzlehttp/guzzle": "^7.8.1"
+    }
+}

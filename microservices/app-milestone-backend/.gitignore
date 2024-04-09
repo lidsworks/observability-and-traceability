@@ -1,0 +1,10 @@
+
+# ignore virtual environment
+env/
+.env
+# ignore editor temp files
+*.swp
+*.swo
+*.tmp
+*.bak
+*.DS_Store

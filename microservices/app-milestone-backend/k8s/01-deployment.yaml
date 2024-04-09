@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lidm-app-milestone-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lidm-app-milestone-backend
+  template:
+    metadata:
+      labels:
+        app: lidm-app-milestone-backend
+    spec:
+      containers:
+      - name: lidm-app-milestone-backend
+        image: localhost:32000/lidm-app-milestone-backend:local
+        envFrom:
+        - configMapRef:
+            name: lidm-app-milestone-backend
+        ports:
+        - containerPort: 5000
